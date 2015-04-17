@@ -10,7 +10,7 @@ lab.experiment('SSN', function() {
     lab.experiment('666', function() {
       lab.beforeEach(function(done) {
         sinon.stub(Math, 'random');
-        Math.random.onCall(0).returns(0.6666);
+        Math.random.onCall(0).returns(0.7400);
         Math.random.onCall(1).returns(0.5555);
         Math.random.onCall(2).returns(0.4444);
         Math.random.onCall(3).returns(0.3333);
@@ -23,7 +23,27 @@ lab.experiment('SSN', function() {
       });
 
       lab.test('Should not match the format 666-##-####', function(done) {
-        expect(SSN.generate()).to.equal('555-44-3333');
+        expect(SSN.generate()).to.equal('499-44-3333');
+        done();
+      });
+    });
+
+    lab.experiment('9##-##-####', function() {
+      lab.beforeEach(function(done) {
+        sinon.stub(Math, 'random');
+        Math.random.onCall(0).returns(0.9999);
+        Math.random.onCall(1).returns(0.5555);
+        Math.random.onCall(2).returns(0.4444);
+        done();
+      });
+
+      lab.afterEach(function(done) {
+        Math.random.restore();
+        done();
+      });
+
+      lab.test('Should not start with a 9', function(done) {
+        expect(SSN.generate()).to.equal('899-55-4444');
         done();
       });
     });

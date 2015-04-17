@@ -11,10 +11,10 @@ function randomComponent(length, max) {
 }
 
 function firstPart() {
-  var part = randomComponent(3, 1000);
-  while (part === '666') {
-    part = randomComponent(3, 1000);
-  }
+  var part;
+  do {
+    part = randomComponent(3, 900);
+  } while (part === '666');
   return part;
 }
 

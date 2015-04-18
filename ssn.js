@@ -4,10 +4,16 @@ module.exports.generate = function generate() {
 
 function randomComponent(length, max) {
   var padding = '';
+  var component = '';
   while (padding.length < length) {
     padding += '0';
   }
-  return (padding + Math.floor(Math.random()*max)).substr(length * -1);
+
+  do {
+    component = (padding + Math.floor(Math.random()*max)).substr(length * -1);
+  } while (component === padding);
+
+  return component;
 }
 
 function firstPart() {

@@ -48,6 +48,69 @@ lab.experiment('SSN', function() {
       });
     });
 
+    lab.experiment('000-##-####', function() {
+      lab.beforeEach(function(done) {
+        sinon.stub(Math, 'random');
+        Math.random.onCall(0).returns(0.0000);
+        Math.random.onCall(1).returns(0.5555);
+        Math.random.onCall(2).returns(0.4444);
+        Math.random.onCall(3).returns(0.3333);
+        done();
+      });
+
+      lab.afterEach(function(done) {
+        Math.random.restore();
+        done();
+      });
+
+      lab.test('Should not have all 0s in first component', function(done) {
+        expect(SSN.generate()).to.equal('499-44-3333');
+        done();
+      });
+    });
+
+    lab.experiment('###-00-####', function() {
+      lab.beforeEach(function(done) {
+        sinon.stub(Math, 'random');
+        Math.random.onCall(0).returns(0.5555);
+        Math.random.onCall(1).returns(0.0000);
+        Math.random.onCall(2).returns(0.4444);
+        Math.random.onCall(3).returns(0.3333);
+        done();
+      });
+
+      lab.afterEach(function(done) {
+        Math.random.restore();
+        done();
+      });
+
+      lab.test('Should not have all 0s in second component', function(done) {
+        expect(SSN.generate()).to.equal('499-44-3333');
+        done();
+      });
+    });
+
+    lab.experiment('###-00-####', function() {
+      lab.beforeEach(function(done) {
+        sinon.stub(Math, 'random');
+        Math.random.onCall(0).returns(0.5555);
+        Math.random.onCall(1).returns(0.4444);
+        Math.random.onCall(2).returns(0.0000);
+        Math.random.onCall(3).returns(0.3333);
+        done();
+      });
+
+      lab.afterEach(function(done) {
+        Math.random.restore();
+        done();
+      });
+
+      lab.test('Should not have all 0s in third component', function(done) {
+        expect(SSN.generate()).to.equal('499-44-3333');
+        done();
+      });
+    });
+
     lab.test('Should match the format ###-##-####', function(done) {
       expect(SSN.generate()).to.match(/^\d{3}-\d{2}-\d{4}$/);
       done();

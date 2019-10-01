@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/nlindley/randomssn",
   "engines": {
-    "node": "0.10.x"
+    "node": ">=8.16.1"
   },
   "devDependencies": {
+    "@hapi/lab": "^20.3.2",
     "chai": "^2.2.0",
-    "lab": "^5.5.1",
     "sinon": "^1.14.1"
   }
 }

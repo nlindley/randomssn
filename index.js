@@ -7,4 +7,4 @@ function handleRequest(request, response) {
 
 var server = http.createServer(handleRequest);
 
-server.listen(process.env.PORT);
+server.listen(process.env.PORT || 3000);

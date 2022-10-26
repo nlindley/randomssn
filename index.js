@@ -1,10 +1,11 @@
-var http = require('http');
-var SSN = require('./ssn');
+const http = require('http');
+const SSN = require('./ssn');
 
 function handleRequest(request, response) {
   response.end(SSN.generate());
 }
 
-var server = http.createServer(handleRequest);
+const server = http.createServer(handleRequest);
+const port = process.env.PORT || 3000;
 
-server.listen(process.env.PORT);
+server.listen(port);

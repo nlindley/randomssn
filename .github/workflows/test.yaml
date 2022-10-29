@@ -1,0 +1,35 @@
+name: Node.js CI
+
+on:
+  - pull_request
+  - workflow_dispatch
+
+env:
+  AZURE_PACKAGE_TOKEN: ${{ secrets.AZURE_PACKAGE_TOKEN }}
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node_version:
+          - "latest"
+          - "18"
+          - "16"
+          - "14"
+          - "12"
+          - "10"
+          - "8"
+          - "6"
+          - "4"
+          - "0.12"
+          - "0.10"
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+      - run: yarn test

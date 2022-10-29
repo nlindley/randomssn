@@ -6,6 +6,6 @@ function handleRequest(request, response) {
 }
 
 const server = http.createServer(handleRequest);
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 server.listen(port);

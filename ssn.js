@@ -3,8 +3,8 @@ module.exports.generate = function generate() {
 };
 
 function randomComponent(length, max) {
-  var padding = '';
-  var component = '';
+  let padding = '';
+  let component = '';
   while (padding.length < length) {
     padding += '0';
   }
@@ -17,7 +17,7 @@ function randomComponent(length, max) {
 }
 
 function firstPart() {
-  var part;
+  let part;
   do {
     part = randomComponent(3, 900);
   } while (part === '666');

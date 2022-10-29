@@ -1,6 +1,6 @@
 {
   "name": "randomssn",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/nlindley/randomssn",
   "engines": {
-    "node": "0.10.x"
+    "node": ">=14"
   },
   "devDependencies": {
+    "@hapi/lab": "^25.0.1",
     "chai": "^2.2.0",
-    "lab": "^5.5.1",
     "sinon": "^1.14.1"
   }
 }

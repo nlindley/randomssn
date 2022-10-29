@@ -3,21 +3,16 @@ module.exports.generate = function generate() {
 };
 
 function randomComponent(length, max) {
-  var padding = '';
-  var component = '';
-  while (padding.length < length) {
-    padding += '0';
-  }
-
+  let component;
   do {
-    component = (padding + Math.floor(Math.random()*max)).substr(length * -1);
-  } while (component === padding);
+    component = Math.floor(Math.random() * max);
+  } while (component === 0);
 
-  return component;
+  return component.toString().padStart(length, '0');
 }
 
 function firstPart() {
-  var part;
+  let part;
   do {
     part = randomComponent(3, 900);
   } while (part === '666');

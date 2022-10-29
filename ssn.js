@@ -3,17 +3,12 @@ module.exports.generate = function generate() {
 };
 
 function randomComponent(length, max) {
-  let padding = '';
-  let component = '';
-  while (padding.length < length) {
-    padding += '0';
-  }
-
+  let component;
   do {
-    component = (padding + Math.floor(Math.random()*max)).substr(length * -1);
-  } while (component === padding);
+    component = Math.floor(Math.random() * max);
+  } while (component === 0);
 
-  return component;
+  return component.toString().padStart(length, '0');
 }
 
 function firstPart() {
